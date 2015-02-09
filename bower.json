@@ -1,0 +1,29 @@
+{
+  "name": "jQuery.values",
+  "version": "1.0.0",
+  "authors": [
+    "Orianda <orianda@paan.de>"
+  ],
+  "description": "jQuery plugin to retrieve form input values",
+  "main": "src/index.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jQuery",
+    "form",
+    "values"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/orianda/jQuery.values.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
