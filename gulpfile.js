@@ -12,12 +12,12 @@ gulp.task('jshint', 'JsHint check for source files.', function () {
         .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('cleanup', 'Remove build folder and its content.', function (callback) {
+gulp.task('cleanup', 'Remove dist folder and its content.', function (callback) {
     var del = require('del');
     del('dist', callback);
 });
 
-gulp.task('build:script', 'Concatenate script files into one js file and prepend the banner.', function () {
+gulp.task('build:script', 'Concatenate script files into one file and prepend the banner.', function () {
     var concat = require('gulp-concat'),
         header = require('gulp-header'),
         pkg = require('./package.json'),
@@ -47,7 +47,7 @@ gulp.task('build:compress', 'Compress script files.', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', 'Build deployment content', function (callback) {
+gulp.task('build', 'Build distribution content', function (callback) {
     var runSequence = require('run-sequence');
     runSequence(
         ['jshint', 'cleanup'],
@@ -72,7 +72,7 @@ gulp.task('update', 'Update npm and bower dependencies.', [
     'update:bower'
 ]);
 
-gulp.task('version', 'Latest app version', function () {
+gulp.task('version', 'Latest project version', function () {
     var bower = require('./bower.json');
     console.log('Version:', bower.version);
 });
