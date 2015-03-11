@@ -51,25 +51,26 @@
         this.find(':input')
             .add(this.filter(':input'))
             .filter([
-                'input[type="hidden"]',
-                'input[type="text"]',
-                'input[type="search"]',
-                'input[type="tel"]',
-                'input[type="url"]',
-                'input[type="email"]',
-                'input[type="password"]',
-                'input[type="datetime"]',
-                'input[type="datetime-local"]',
-                'input[type="date"]',
-                'input[type="time"]',
-                'input[type="week"]',
-                'input[type="month"]',
-                'input[type="number"]',
-                'input[type="range"]',
-                'input[type="color"]',
-                'input[type="checkbox"]',
-                'input[type="radio"]',
-                'input[type="file"]',
+                'input:not([type])',
+                'input[type=hidden]',
+                'input[type=text]',
+                'input[type=search]',
+                'input[type=tel]',
+                'input[type=url]',
+                'input[type=email]',
+                'input[type=password]',
+                'input[type=datetime]',
+                'input[type=datetime-local]',
+                'input[type=date]',
+                'input[type=time]',
+                'input[type=week]',
+                'input[type=month]',
+                'input[type=number]',
+                'input[type=range]',
+                'input[type=color]',
+                'input[type=checkbox]',
+                'input[type=radio]',
+                'input[type=file]',
                 'select',
                 'textarea'
             ].join(','))
@@ -77,7 +78,7 @@
             .each(function () {
                 var input = $(this),
                     name = input.attr('name') || '',
-                    type = $.trim(input.is('select') ? 'select' : input.is('textarea') ? 'textarea' : input.attr('type') || '').toLowerCase(),
+                    type = $.trim(input.is('select') ? 'select' : input.is('textarea') ? 'textarea' : input.attr('type') || 'text').toLowerCase(),
                     value;
 
                 if ($.inArray(type, ['checkbox', 'radio']) >= 0) {
