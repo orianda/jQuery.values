@@ -104,7 +104,6 @@
                     if (type === 'email' && prop(input, 'multiple')) {
                         value = value.length ? value.split(',') : [];
                     }
-                    value = value.length ? value : undefined;
                 }
 
                 if (typeof value === 'undefined') {
