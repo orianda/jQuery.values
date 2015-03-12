@@ -24,7 +24,7 @@
     /**
      * Filter select value
      * @param {Array|string|null} value
-     * @returns {Array|string}
+     * @returns {Array|string|undefined}
      */
     function normalizeSelectValue(value) {
         var i, l;
@@ -36,7 +36,7 @@
             }
             return value;
         }
-        return value;
+        return typeof value === 'string' && value.length ? value : undefined;
     }
 
     /**
@@ -99,10 +99,10 @@
                                 value.push($(this).val());
                             });
                         if (type === 'radio') {
-                            value = value.shift() || '';
+                            value = value.shift();
                         }
-                    } else {
-                        value = input.is(':checked') ? input.val() : '';
+                    } else if (input.is(':checked')) {
+                        value = input.val();
                     }
                 } else if (type === 'select') {
                     value = normalizeSelectValue(input.val());
@@ -112,6 +112,8 @@
                     value = input.val();
                     if (type === 'email' && prop(input, 'multiple')) {
                         value = value.length ? value.split(',') : [];
+                    }else if(value.length === 0){
+                        value = undefined;
                     }
                 }
 
