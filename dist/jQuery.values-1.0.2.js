@@ -2,7 +2,7 @@
  * jQuery.values
  * jQuery plugin to retrieve form input values
  *
- * @version v1.0.1
+ * @version v1.0.2
  * @link https://github.com/orianda/jQuery.values
  * @author Orianda <orianda@paan.de>
  * @license MIT
@@ -113,7 +113,6 @@
                     if (type === 'email' && prop(input, 'multiple')) {
                         value = value.length ? value.split(',') : [];
                     }
-                    value = value.length ? value : undefined;
                 }
 
                 if (typeof value === 'undefined') {
