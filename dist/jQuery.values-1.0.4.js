@@ -2,7 +2,7 @@
  * jQuery.values
  * jQuery plugin to retrieve form input values
  *
- * @version v1.0.3
+ * @version v1.0.4
  * @link https://github.com/orianda/jQuery.values
  * @author Orianda <orianda@paan.de>
  * @license MIT
@@ -91,7 +91,7 @@
                     value;
 
                 if ($.inArray(type, ['checkbox', 'radio']) >= 0) {
-                    if (name.length) {
+                    if (name.length && this.form) {
                         value = [];
                         $('input[type="' + type + '"][name="' + name + '"]:checked', this.form)
                             .not(isDisabled)
@@ -101,6 +101,8 @@
                         if (type === 'radio') {
                             value = value.shift();
                         }
+                    } else if (type === 'checkbox') {
+                        value = input.is(':checked') ? [input.val()] : [];
                     } else if (input.is(':checked')) {
                         value = input.val();
                     }
@@ -112,7 +114,7 @@
                     value = input.val();
                     if (type === 'email' && prop(input, 'multiple')) {
                         value = value.length ? value.split(',') : [];
-                    }else if(value.length === 0){
+                    } else if (value.length === 0) {
                         value = undefined;
                     }
                 }
