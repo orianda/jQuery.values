@@ -103,14 +103,12 @@
                     value = input.val();
                     if (type === 'email' && prop(input, 'multiple')) {
                         value = value.length ? value.split(',') : [];
+                    }else if(value.length === 0){
+                        value = undefined;
                     }
                 }
 
-                if (typeof value === 'undefined') {
-                    delete result[name];
-                } else {
-                    result[name] = value;
-                }
+                result[name] = value;
             });
 
         return result;

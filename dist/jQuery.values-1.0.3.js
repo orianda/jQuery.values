@@ -2,7 +2,7 @@
  * jQuery.values
  * jQuery plugin to retrieve form input values
  *
- * @version v1.0.2
+ * @version v1.0.3
  * @link https://github.com/orianda/jQuery.values
  * @author Orianda <orianda@paan.de>
  * @license MIT
@@ -24,7 +24,7 @@
     /**
      * Filter select value
      * @param {Array|string|null} value
-     * @returns {Array|string|undefined}
+     * @returns {Array|string}
      */
     function normalizeSelectValue(value) {
         var i, l;
@@ -36,7 +36,7 @@
             }
             return value;
         }
-        return typeof value === 'string' && value.length ? value : undefined;
+        return value;
     }
 
     /**
@@ -99,10 +99,10 @@
                                 value.push($(this).val());
                             });
                         if (type === 'radio') {
-                            value = value.shift();
+                            value = value.shift() || '';
                         }
-                    } else if (input.is(':checked')) {
-                        value = input.val();
+                    } else {
+                        value = input.is(':checked') ? input.val() : '';
                     }
                 } else if (type === 'select') {
                     value = normalizeSelectValue(input.val());
@@ -115,11 +115,7 @@
                     }
                 }
 
-                if (typeof value === 'undefined') {
-                    delete result[name];
-                } else {
-                    result[name] = value;
-                }
+                result[name] = value;
             });
 
         return result;
