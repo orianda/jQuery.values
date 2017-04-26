@@ -1,6 +1,6 @@
 {
   "name": "jQuery.values",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "jQuery plugin to retrieve form input values",
   "homepage": "https://github.com/orianda/jQuery.values",
   "main": "src/index.js",
